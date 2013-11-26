@@ -1,0 +1,63 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Jquery</title>
+<script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
+<script src="http://code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+<script language="javascript">
+$(document).ready(function(e) {
+$("#u").keyup(function(){
+$.post("db.php",{"key":$("#u").val()},function(data){
+if(data != "error")
+{
+if($("#u").val() != "none")
+{
+$("#div").empty();
+$("#div").append(data);
+}
+else
+{
+$("#div").empty();	
+}
+}
+});
+});
+});
+</script>
+<style>
+body{
+background-image:url(bg.jpg);
+}
+input{
+margin:auto;
+width:590px;
+height:30px;
+padding:5px;
+border:1px solid #960;
+margin-top:10px;
+border-radius:10px;
+color:#333;
+font-size:24px;
+}
+#div{
+width:600px;
+height:auto;
+background-color:#FFF;
+border:1px solid #960;
+margin-top:10px;
+border-radius:10px;
+text-align:left;	
+}
+p{
+margin-left:10px;
+width:580px;
+border-bottom:1px dashed #CCCCCC;
+}
+</style>
+</head>
+<body>
+<div align="center"><input type="text" placeholder="Search..." id="u"></div>
+<div align="center"><div id="div"></div></div>
+</body>
+</html>
